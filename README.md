@@ -2,11 +2,10 @@
 JAvaScript高级程序设计第三版笔记及源码
 
 第一章：JavaScript简介
-
-                 1.1  JavaScript简史  诞生于1995年，目的是将应该由服务器端的验证移到客户端验证。
-                 1.2  JavaScript实现  完整JavaScript应由核心ECMAScript，浏览器对象模型BOM，文档对象模型DOM构成。ECMAScript提供语言核心功能，BOM提供与浏览器交互的方法和接口，DOM提供访问和操作网页的方法和接口。
-                 1.3  JavaScript版本
-                 1.4  小结
+1.1  JavaScript简史  诞生于1995年，目的是将应该由服务器端的验证移到客户端验证。
+1.2  JavaScript实现  完整JavaScript应由核心ECMAScript，浏览器对象模型BOM，文档对象模型DOM构成。ECMAScript提供语言核心功能，BOM提供与浏览器交互的方法和接口，DOM提供访问和操作网页的方法和接口。
+1.3  JavaScript版本
+1.4  小结
 
 第二章：在HTML中使用JavaScript
 
