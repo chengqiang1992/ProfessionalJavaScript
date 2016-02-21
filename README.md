@@ -52,15 +52,15 @@ JAvaScript高级程序设计第三版笔记及源码
           3.4.4 Boolean类型
                 Boolean对象只有两个字面值：true和false，true不一定等于1，false也不一定等于0。
                 Boolean()函数可以将任何类型转换成Boolean类型，规则如下
-               _____________________________________
-                 数据类型   转换成为true的值     转换成为false的值
-               _____________________________________
+                ---
+                  数据类型   转换成为true的值           转换成为false的值
+                ---
                   Boolean        true                           false
-                    String        任何非空字符               ""（空字符） 
-                  Number   任何非零数字（包括无穷大）  0或NAN
-                  Object         任何对象                          null
-                Undefined      n/a                             undefined 
-                 ____________________________________
+                  String      任何非空字符                   ""（空字符） 
+                  Number      任何非零数字（包括无穷大）         0或NAN
+                  Object      任何对象                          null
+                  Undefined      n/a                          undefined 
+                ---
                  
           3.4.5 Number类型
                 Number()、parseInt()和parseFloat()。第一个函数，即转型函数Number()可以用于任何数据类型，而另两个函数则专门用于把字符串转换成数值。
@@ -68,15 +68,44 @@ JAvaScript高级程序设计第三版笔记及源码
                 var num2 = parseInt(""); // NaN
                 var num3 = parseInt("0xA"); // 10（十六进制数）
                 var num4 = parseInt(22.5); // 22
-                var num5 = parseInt("070"); // 56（八进制数）
+                var num5 = parseInt("070"); // 56（八进制数）。八进制字面值的第一位必须是零（0），然后是八进制数字序列（0~7）。
                 var num6 = parseInt("70"); // 70（十进制数）
-                var num7 = parseInt("0xf"); // 15（十六进制数）
+                var num7 = parseInt("0xf"); // 15（十六进制数）八进制字面值的前两位必须是0x，后跟任何十六进制数字（0~9及A~F）
           3.4.6 String类型
                 String类型用于表示由零或多个16位Unicode字符组成的字符序列。字符串还可以由双引号或单引号表示。
-                1、字符串面量；2、字符串的特点：ECMAScript中的字符串是不可变的，也就是说，一旦创建，他们的值就不能改变。var lang = "Java";lang = lang + "Script";以上示例中的变量lang 开始时包含字符串"Java"。而第二行代码把lang 的值重新定义为"Java"与"Script"的组合，即"JavaScript"。实现这个操作的过程如下：首先创建一个能容纳10 个字符的新字符串，然后在这个字符串中填充"Java"和"Script"，最后一步是销毁原来的字符串"Java"和字符串"Script"；3 、转换成字符串toString()和String().
+                1、字符串面量；
+                    \n  换行；\t    制表；\b    空格；\r    回车；
+                    \f  进纸；\\    斜杠；\'    单引号；\"  双引号
+                    \xnn    以十六进制代码nn表示一个字符（其中n为0~F）。例如：\x41 表示"A";
+                    \unnnn  以十六进制代码nnnn表示的一个Unicode字符（其中n为0~F）。例如，\u03a3表示希腊字符∑。
+                2、字符串的特点：ECMAScript中的字符串是不可变的，也就是说，一旦创建，他们的值就不能改变。也就是说，要改变某个变量保存的字符串，首先要销毁原来的字符串，然后再用另一个包含新值得字符串去填充该变量
+                var lang = "Java";lang = lang + "Script";
+                以上示例中的变量lang开始时包含字符串"Java"。而第二行代码把lang的值重新定义为"Java"与"Script"的组合，即"JavaScript"。实现这个操作的过程如下：首先创建一个能容纳10个字符的新字符串，然后在这个字符串中填充"Java"和"Script"，最后一步是销毁原来的字符串"Java"和字符串"Script"；
+                3 、转换成字符串toString()和String().
+                    toString()方法：数值、布尔值、对象和字符串值都有一个toString()方法。但是null和undefined没有这个方法。
+                                    多数情况下，该方法不需要传入参数，但是在其实是可以传入一个：*输出数值的基数*。如下：
+                                    var num = 10;
+                                    alert(num.toString());      //"10"
+                                    alert(num.toString(2));     //"1010"
+                                    alert(num.toString(8));     //"12"
+                                    alert(num.toString(10));    //"10"
+                                    alert(num.toString(16));    //"a"
+                    String()方法：在不知道要转换的值是不是null或者undefined的情况下，还可以使用转型函数String。
+                                  遵循规则如下
+                                  - 如果有toString方法，就调用这个方法。
+                                  - 如果值是null，则返回"null"
+                                  - 如果值是undefined，则返回undefined
           3.4.7 Object类型
                 ECMAScript中的对象其实就是一组数据和功能的集合。对象可以通过执行new操作符后跟要创建的对象类型的名称来创建。
-                仅仅创建Object的实例并没有什么用处，但关键是要理解一个重要的思想：即在ECMAScript中，Object类型是所有他的实例的基础。换句话说，Object类型所具有的任何属性和方法也同样存在于更具体的对象中。Object的每个实例都具有下列属性和方法：
+                仅仅创建Object的实例并没有什么用处，但关键是要理解一个重要的思想：即在ECMAScript中，Object类型是所有他的实例的基础。换句话说，Object类型所具有的任何属性和方法也同样存在于更具体的对象中。
+                *Object的每个实例都具有下列属性和方法：*
+                1. Constructor：保存着用于创建当前对象的函数。对于前面的例子而言，构造函数（constructor）就是Object()；
+                2. hasOwnproperty(propertyName)：用于检查给定的属性在当前对象实例中（而不是在实例的原型中）是否存在。其中，作为参数的属性名(propertyName)必须以字符串形式指定(例如：o.hasOwnProperty("name"))；
+                3. isPrototypeOf(object)：用于检查传入的对象是否是另一个对象的原型；
+                4. propertyIsEnumerable(propertyName)：用于检查给定的属性是否能够使用for-in语句(本章后面会讨论)来枚举。与hasOwnproperty()方法一样，作为参数的属性名必须以字符串形式指定；
+                5. toLocaleString()：返回对象的字符串表示，该字符串与执行环境的地区对应；
+                6. toString():返回对象的字符串表示；
+                7. valueOf():返回对象的字符串、数值或布尔值表示。通常与toString()方法返回值相同。
 
     3.5  操作符
          ECMA-262描述了一组用于操作数据值的操作符，包括算术操作符、位操作符。关系操作符和相等操纵符。ECMAScript操作符的与众不同之处在于，他们能够适用于很多值，例如字符串、数字值、布尔值甚至对象。不过，在应用对象时，相应的操作符通常都会调用对象的valueOf()和toString()方法，以便取得可以操作的值。
