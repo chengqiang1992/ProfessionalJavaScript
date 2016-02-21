@@ -121,16 +121,87 @@ JAvaScript高级程序设计第三版笔记及源码
         7： valueOf()：返回对象的字符串、数值或布尔值表示。
     3.6  语句
           3.6.1  if语句
+                例1：
+                    if(condition){
+                        statement1
+                    }else{
+                        statement2 
+                    }
+                例2：
+                    if(condition){
+                        statement1
+                    }else if{
+                        statement2
+                    }else{
+                        statement3
+                    }
           3.6.2  do-while语句
+                    do{
+                        statement
+                    }while(expression);
           3.6.3  while语句
+                    while(expression){
+                        statement
+                    }
           3.6.4  for语句
+                    for(initialization;expression;post-loop-expression){
+                        statement;
+                    }
           3.6.5  for-in语句
+                    for-in语句是一种精准的迭代语句，可以用来枚举对象的属性。以下是for-in语句的用法：
+                        for(property in expression){
+                            statement;
+                        }
+                    例子：
+                        for(var proName in window){
+                            document.write(proName);
+                        }
+                    该例子使用for-in循环来显示BOM中的window对象的所有属性。每次执行循环是，都会将window对象中存在的一个属性名复制给变量proName。这个过程会一直持续到对象中的所有属性都被枚举一遍为止。与for语句类似，这里控制语句中的var操作符也不是必需的，但是为了保证局部变量，我们推荐使用这种方法。
+                    ECMAScript对象的属性没有顺序。因此，通过for-in循环输出的属性名的顺序是不可预测的。
+                    如果要迭代的对象的变量值为null或undefined，for-in语句就会抛出错误。ECMAScript5更正了这一行为，对这种情况不再抛出错误，而只是不执行这一行为；为了保证最大程度的兼容性，建议在使用for-in循环之前，先检测确认该对象的值不是null或undefined。
           3.6.6  label语句
+                使用label语句可以在代码中添加标签，以便将来使用。
+                    label:statement
+                下面是一个示例：
+                    start:for(){}
           3.6.7  break和continue语句
           3.6.8  with语句
           3.6.9  switch语句
+                    switch(expression){
+                        case value:
+                            statement;
+                            break;
+                        case vaule:
+                            statement;
+                            break;
+                        default:statement
+                    }
     3.7  函数
+        ECMAScript中的函数使用function关键字来声明，后跟一组参数以及函数体。
+            function functionName(arg0,arg1,----,agrN){
+                statement
+            }
          3.7.1  理解参数
+                ECMAScript函数的参数与大多数其他语言中函数的参数有所不同。ECMAScript函数不介意传递进来多少个参数，也不在乎传进来的参数是什么数据类型。也就是说，即便你定义的函数只接受两个参数，在调用这个函数时也未必一定要传递两个参数。可以传递一个、三个甚至不传递参数。之所以会这样是因为：ECMAScript中的参数在内部是一个数组表示的。函数接收到的始终都是这个数组，而不关心数组中包含哪些参数。实际上，在函数体内可以通过arguments对象来访问这个参数数组，从而获取传递给函数的每一个参数。
+                1. 使用length属性来确定传递进来多少个参数。
+                2. 参数名只提供便利，而不是必须。
+                    function howManyArgs(){
+                        alert(argument.length);
+                    }
+                    howManyArgs("string",45);   //2
+                    howManyArgs();              //0
+                    howManyArgs(12);            //1
+                3. arguments对象可以与命名参数一起使用，如下：
+                    function doAdd(num1,num2){
+                        if(arguments.length == 1){
+                            alert(num1 + 10);
+                        }else{
+                            alert(arguments[0] + num2);
+                        }
+                    }
+                4. 关于arguments行为，还有一点比较有意思。就是它的值永远与对应命名参数的值保持同步。
+                5. 关于参数还有一点需要记住的是，没有传递值得命名参数都将自动被赋予undefined值。
          3.7.2  没有参数
+                ECMAScript函数不能像传统意义上那样实现重载。而在其他语言中，可以为一个函数编写两个定义，只要这两个定义的签名（接受的参数的类型和数量）不同即可。如前所述，ECMAScript函数没有签名，因为其参数是由包含零或多个值得数组来表示的。而没有函数签名，真正的重载是不可能做到的。
     3.8  小结
 
