@@ -25,9 +25,16 @@ gulp.task('styles', function () {
     .pipe(notify({ message: 'Styles task complete' }));
 });
 
+// 语法检查
+gulp.task('jshint', function () {
+    return gulp.src('/assets/**/scripts/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
+});
+
 // js代码校验、合并和压缩
 gulp.task('scripts', function() {
-  return gulp.src('assets/**/**/*.js')
+  return gulp.src('/assets/**/scripts/*.js')
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
@@ -70,10 +77,9 @@ gulp.task('watch', function() {
 });
 
 // 设置默认任务（default）
-gulp.task('default', ['clean'], function() {
+gulp.task('default', ['clean','jshint', 'watch'], function() {
     gulp.start('scripts');
 });
-
 //gulp.task(name[, deps], fn) 定义任务  name：任务名称 deps：依赖任务名称 fn：回调函数
 //gulp.src(globs[, options]) 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组) 
 //gulp.dest(path[, options]) 处理完后文件生成路径
