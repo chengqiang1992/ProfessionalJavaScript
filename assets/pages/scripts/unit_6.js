@@ -63,7 +63,6 @@
 // 	[[Configurable]]：表示能否通过delete删除属性从而重新定义属性
 // 	[[Enumerable]]：表示能否通过for-in循环返回属性
 // 	[[Writable]]：能否修改属性的值
-<<<<<<< HEAD
 // 	[[Value]]：包含这个属性的数据值
 
 // 6.2  创建对象
@@ -313,8 +312,3 @@
 			value:Person
 		});
 
-
-
-=======
-// 	[[Value]]：包含这个属性的数据值
->>>>>>> ea35e75a3823b20234ef2d1ed56ad46e7f37fdd9
