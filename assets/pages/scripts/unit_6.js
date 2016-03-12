@@ -263,54 +263,139 @@
 		// alert(person1.hasOwnProperty("name"));
 		// alert('name' in person1);
 
-		3.  更简单的原型语法。
+		// 3.  更简单的原型语法。
 
-		function Person(){
+		// function Person(){
+		// }
+
+		// Person.prototype = {
+		// 	name:'chengqiang',
+		// 	age:22,
+		// 	job:'Software Engineer',
+		// 	sayName:function(){
+		// 		alert(this.name);
+		// 	}
+		// };
+
+		// 这种写法 constructor不再指向 Person函数。
+
+		// function Person(){
+		// }
+
+		// Person.prototype = {
+		// 	constructor:Person,
+		// 	name:'chengqiang',
+		// 	age:22,
+		// 	job:'Software Engineer',
+		// 	sayName:function(){
+		// 		alert(this.name);
+		// 	}
+		// };
+
+		// 这中方式重设 constructor属性会导致他的 [[Enumerable]]特性被设置为true。默认情况下，原生的 constructor是不可枚举的。
+		// 因此，如果您使用兼容模式 ECMAScript 5中的JavaScript引擎，可以试一试 Object.defineProperty(Object, prop, descriptor).
+		// function Person(){
+		// }
+
+		// Person.prototype = {
+		// 	name:'chengqiang',
+		// 	age:22,
+		// 	job:'Software Engineer',
+		// 	sayName:function(){
+		// 		alert(this.name);
+		// 	}
+		// };
+
+		// //重设构造函数，只是用于ECMAScript 5 兼容的JavaScript引擎
+		// Object.defineProperty(Person.prototype,'constructor',{
+		// 	enumerable:false,
+		// 	value:Person
+		// });
+
+	// 	4. 原型的动态性
+	// 	由于在原型中查找值的过程是一次搜索，因此我们对原型对象所做的任何修改都能够立即从实例上反映出来——即使是先创建了实例后修改原型也照样如此。
+
+	// 	var friend = new Person();
+	// 	Person.prototype.sayHi = function(){
+	// 		alert('Hi');
+	// 	};
+
+	// 	friend sayHi();
+
+	// 	以上代码先创建了Person的一个实例，并将其保存在person。然后，下一条语句在Person.prototype中添加了一个方法sayHi()。即使person实例是在添加新方法
+	// 	之前创建的，但它仍然可以访问这个新方法。其原因可以归结为实例与原型之间的松散连接关系。
+
+	// 	尽管可以随时为原型添加属性和方法，并且修改能够立即在所有对象实例中反映出来，但是如果重写个整个原型对象，那么情况就不一样了。
+
+	// 	function Person(){
+	// 	}
+	// 	var friend = new Person();
+
+	// 	Person.prototype = {
+	// 		constructor:Person,
+	// 		name:'chengqiang',
+	// 		age:22,
+	// 		job:'Software Engineer',
+	// 		sayName:function(){
+	// 			alert(this.name);
+	// 		}
+	// 	};
+	// 	friend.sayName();
+
+
+	// 	5.原生对象的原型
+	// 	原型模式的重要性不仅体现在创建自定义类型方面，就连所有原生的引用类型，都采用这种模式创建。
+
+	// 	6.  原型对象的问题
+	// 	原型模式缺点：
+	// 		首先，他忽略了为构造函数传递初始化参数这一环节，结果所有实例在默认情况下都将取得相同的属性值。
+
+
+	// 6.2.4  组合使用构造函数模式和原型模式
+
+	// 	创建自定义类型的最常见方式，就是组合使用构造函数与原型模式。构造函数模式用于定义实例属性，儿原型模式用于定义方法和共享的属性。
+	// 	结果，每个实例都会有自己的一份实力属性的副本，但同时又共享着对方法的引用，最大程度节约了内存。另外，这种模式还支持传递参数。
+
+		// function Person(name,age,job){
+		// 	this.name = name;
+		// 	this.age = age;
+		// 	this.job = job;
+		// 	this.friend = ["zhansgan","lizi"];
+		// }
+		// Person.prototype = {
+		// 	constructor:Person,
+		// 	sayName:function(){
+		// 		alert(this.name);
+		// 	}
+		// }
+
+		// var person1 = new Person("chenqgiang",22,"Software Engineer");
+		// var person2 = new Person("pluto",22,"Front Engineer");
+
+		// person1.friend.push("wanger");
+		// alert(person1.friend);
+		// alert(person2.friend);
+		// alert(person1.friend === person2.friend);
+		// alert(person1.sayName === person2.sayName);
+
+	// 6.2.5  动态原型模式
+
+		function Person(name,age,job){
+			//属性
+			this.name = name;
+			this.age = age;
+			this.job = job;
+
+			//方法
+			if(typeof this.sayName != 'function'){
+				Person.prototype.sayName = function(){
+					alert(this.name);
+				};
+			}
 		}
 
-		Person.prototype = {
-			name:'chengqiang',
-			age:22,
-			job:'Software Engineer',
-			sayName:function(){
-				alert(this.name);
-			}
-		};
+		var friend = new Person("chenqgiang",22,"Software Engineer");
+		friend.sayName();
 
-		这种写法 constructor不再指向 Person函数。
-
-		function Person(){
-		}
-
-		Person.prototype = {
-			constructor:Person,
-			name:'chengqiang',
-			age:22,
-			job:'Software Engineer',
-			sayName:function(){
-				alert(this.name);
-			}
-		};
-
-		这中方式重设 constructor属性会导致他的 [[Enumerable]]特性被设置为true。默认情况下，原生的 constructor是不可枚举的。
-		因此，如果您使用兼容模式 ECMAScript 5中的JavaScript引擎，可以试一试 Object.defineProperty(Object, prop, descriptor).
-		function Person(){
-		}
-
-		Person.prototype = {
-			name:'chengqiang',
-			age:22,
-			job:'Software Engineer',
-			sayName:function(){
-				alert(this.name);
-			}
-		};
-
-		//重设构造函数，只是用于ECMAScript 5 兼容的JavaScript引擎
-		Object.defineProperty(Person.prototype,'constructor',{
-			enumerable:false,
-			value:Person
-		});
-
-
-
+		6.2.6  寄生构造函数
+		6.2.7  稳妥构造函数
