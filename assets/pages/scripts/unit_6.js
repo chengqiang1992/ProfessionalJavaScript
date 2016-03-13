@@ -324,7 +324,6 @@
 
 	// 	以上代码先创建了Person的一个实例，并将其保存在person。然后，下一条语句在Person.prototype中添加了一个方法sayHi()。即使person实例是在添加新方法
 	// 	之前创建的，但它仍然可以访问这个新方法。其原因可以归结为实例与原型之间的松散连接关系。
-
 	// 	尽管可以随时为原型添加属性和方法，并且修改能够立即在所有对象实例中反映出来，但是如果重写个整个原型对象，那么情况就不一样了。
 
 	// 	function Person(){
@@ -380,22 +379,23 @@
 
 	// 6.2.5  动态原型模式
 
-		function Person(name,age,job){
-			//属性
-			this.name = name;
-			this.age = age;
-			this.job = job;
+		// function Person(name,age,job){
+		// 	//属性
+		// 	this.name = name;
+		// 	this.age = age;
+		// 	this.job = job;
 
-			//方法
-			if(typeof this.sayName != 'function'){
-				Person.prototype.sayName = function(){
-					alert(this.name);
-				};
-			}
-		}
+		// 	//方法
+		// 	if(typeof this.sayName != 'function'){
+		// 		Person.prototype.sayName = function(){
+		// 			alert(this.name);
+		// 		};
+		// 	}
+		// }
 
-		var friend = new Person("chenqgiang",22,"Software Engineer");
-		friend.sayName();
+		// var friend = new Person("chenqgiang",22,"Software Engineer");
+		// friend.sayName();
 
-		6.2.6  寄生构造函数
-		6.2.7  稳妥构造函数
+		// 6.2.6  寄生构造函数
+		// 6.2.7  稳妥构造函数
+
