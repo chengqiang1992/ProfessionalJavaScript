@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>unit_13  事件</title>
+
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width,initial-scale" name="vieport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/pages/css/unit_5.css">
+</head>
+<body>
+
+    <header>
+        <h2>第十三章  事件</h2>
+    </header>
+
+    <section>
+        <h3>13.1 事件流</h3>
+            <!--事件流-->
+            <div id="myDiv">click me</div>
+            <h4>13.1.1  事件冒泡</h4>
+            <h4>13.1.2  事件捕获</h4>
+            <h4>13.1.3  DOM事件流</h4>
+        <h3>13.2 事件处理程序</h3>
+            <h4>13.2.1  HTML事件处理程序</h4>
+                <!--HTML事件处理程序-->
+                <input type="button" value="Click me" onclick="alert('Clicked')"> 
+
+                <!--HTML事件处理程序  其他地方定义-->
+                <input type="button" value="Click me" onclick="showMessage()" /> 
+
+                <!--这样指定事件处理程序具有一些独到之处。首先，这样会创建一个封装着元素属性值的函数。这个函数中有一个局部变量event，也就是事件对象-->
+                <input type="button" value="Click me" onclick="alert(event.type)" /> 
+                <!--通过event变量，可以直接访问事件对象，你不用自己定义它，也不用从函数的参数列表中读取。-->
+
+                <!--在这个函数内部，this值等于事件的目标元素，例如：-->
+                <!--输出"Click Me"-->
+                <input type="button" value="Click me" onclick="alert(this.value)">
+
+                <!--关于动态创建的函数，另一个有意思的地方是他扩展作用域的方式。在这个函数内部，可以向访问局部变量一样访问document及该元素本身的成员。这个函数使用with像这样扩展作用域：-->
+
+            <h4>13.2.2  DOM0级事件处理程序</h4>
+                <!--通过JavaScript指定事件处理程序的传统方式，就是将一个函数赋值给一个事件处理程序属性。这种为事件处理程序赋值的方法是在第四代web浏览器中出现的。-->
+                <input type="button" id="myBtn" value="Click Me">
+
+            <h4>13.2.3  DOM2级事件处理程序</h4>
+                <input type="button" id="myBtn2" value="Click Me">
+
+            <h4>13.2.4  IE事件处理程序</h4>
+            <h4>13.2.5  跨浏览器的事件处理程序</h4>
+                <input type="button" id="myBtn4" value="Click Me">
+
+        <h3>13.3 事件对象</h3>
+            <h4>13.3.1  DOM中的事件对象</h4>
+            <h4>13.3.2  IE中的事件对象</h4>
+            <h4>13.3.3  跨浏览器的事件对象</h4>
+        <h3>13.4 事件类型</h3>
+            <h4>13.4.1  UI事件</h4>
+            <h4>13.4.2  焦点事件</h4>
+            <h4>13.4.3  鼠标与滚轮事件</h4>
+            <h4>13.4.4  键盘与文本事件</h4>
+            <h4>13.4.5  复合事件</h4>
+            <h4>13.4.6  变动事件</h4>
+            <h4>13.4.7  HTML5事件</h4>
+            <h4>13.4.8  设备事件</h4>
+            <h4>13.4.9  触摸与手势事件</h4>
+        <h3>13.5 内存和性能</h3>
+            <h4>13.5.1  事件委托</h4>
+            <h4>13.5.2  移除事件处理程序</h4>
+        <h3>13.6 模拟事件</h3>
+            <h4>13.6.1  DOM中的事件模拟</h4>
+            <h4>13.6.2  IE中的事件模拟</h4>
+        <h3>13.7 小结</h3>
+    </section>
+
+    <footer>
+        <div class="page-footer-inner">
+            2016 &copy; 610工作室. <a href="http://www.choudiaosi.com" target="_blank">610工作室!</a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="../assets/global/scripts/crossBrowserEventHandler.js"></script>
+    <script type="text/javascript" src="../assets/pages/scripts/unit_13.js"></script>
+</body>
+</html>

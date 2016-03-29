@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>unit_16  HTML脚本编程</title>
+
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width,initial-scale" name="vieport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/pages/css/unit_5.css">
+</head>
+<body>
+
+    <header>
+        <h2>第十六章  HTML脚本编程</h2>
+    </header>
+
+    <section>
+        <h3>16.1  跨文档消息传递</h3>
+        <h3>16.2  原生拖放</h3>
+            <h4>16.2.1  拖放事件</h4>
+            <h4>16.2.2  自定义放置目标</h4>
+            <h4>16.2.3  dataTransfer对象</h4>
+            <h4>16.2.4  dropEffect与effectAllowed</h4>
+            <h4>16.2.5  可拖动</h4>
+            <h4>16.2.6  其他成员</h4>
+        <h3>16.3  媒体元素</h3>
+
+            <!--嵌入视频-->
+            <video id="myVideo" width="320" height="240" controls="controls">
+                <source src="../assets/pages/media/video/fb.3gp" type="video/3gpp;codecs='vp8,vorbis'">
+                <source src="../assets/pages/media/video/fb.mp4" type="audio/mp4">
+                <source src="../assets/pages/media/video/fb.mpg">
+                Video player not available.
+            </video>
+
+            <br>    
+
+            <!--嵌入音频-->
+            <audio id="myAudio" controls>
+                <source src="../assets/pages/media/audio/If You - BigBang.mp3" type="audio/mp3">
+                <source src="../assets/pages/media/audio/If You - BigBang.wav" type="audio/vnd.wave">
+                <source src="../assets/pages/media/audio/If You - BigBang.ape">
+                Video player not available.
+            </audio>
+
+            <h4>16.3.1  属性</h4>
+            <h4>16.3.2  事件</h4>
+            <h4>16.3.3  自定义媒体播放器</h4>
+                
+                <div class="mediapalyer">
+                    <div class="video">
+                        <video id="player" width="320" height="240" controls="controls">
+                            <source src="../assets/pages/media/video/fb.3gp" type="video/3gpp;codecs='vp8,vorbis'">
+                            <source src="../assets/pages/media/video/fb.mp4" type="audio/mp4">
+                            <source src="../assets/pages/media/video/fb.mpg">
+                            Video player not available.
+                        </video>
+                    </div>
+                    <div class="controls">
+                        <input type="button" value="Play" id="video-btn"/>
+                        <span id="curtime">0</span>/<span id="duration">0</span>
+                    </div>
+                </div>
+            <h4>16.3.4  检测编码器的支持情况</h4>
+            <h4>16.3.5  Audio类型</h4>
+            <h3>16.4  历史状态管理</h3>
+            <h3>16.5  小结</h3>
+</section>
+
+    <footer>
+        <div class="page-footer-inner">
+            2016 &copy; 610工作室. <a href="http://www.choudiaosi.com" target="_blank">610工作室!</a>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../assets/global/scripts/crossBrowserEventHandler.js"></script>
+    <script type="text/javascript" src="../assets/pages/scripts/unit_16.js"></script>
+</body>
+</html>
