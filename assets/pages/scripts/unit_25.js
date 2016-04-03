@@ -271,6 +271,30 @@
                 });
 
 
+                $("#uplaodBanner2").change(function () {
+                    img_upload_preview1(this);
+                });
+                function img_upload_preview1(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var image = new Image();
+                            image.src = e.target.result;
+                            image.onload = function () {
+                                var height = this.height;
+                                var width = this.width;
+                                if (height == 100 || width == 640) {
+                                    $("#banner640x100").attr("src", e.target.result);
+                                    $("#mobile_pic_banner").attr("src", e.target.result);
+                                } else {
+                                    alert("图片尺寸不匹配，请上传640*100像素的图片");
+                                }
+                            }
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
 //     25.4.1  对象URL
 //     25.4.1  读取拖放文件
 //     25.4.1  使用XHR文件
