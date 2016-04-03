@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://nec.netease.com/standard/css-practice.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+ 
+ 
+<title>最佳实践 - CSS规范 - 规范 - NEC : 更好的CSS样式解决方案</title> 
+<meta name="keywords" content="CSS方案,CSS规范,CSS框架,CSS代码库,CSS插件,网页制作,前端页面开发,解决方案"> 
+<meta name="description" content="NEC包括了规范、框架、代码库、插件等内容，致力于为前端开发人员提供高效率高质量的前端页面开发解决方案，提高多人协作效率，也为非专业人员提供快速制作网页的解决方案。"> 
+<meta name="viewport" content="width=device-width"> 
+<link href="./最佳实践 - CSS规范 - 规范 - NEC _ 更好的CSS样式解决方案_files/core.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="http://nec.netease.com/img/favicon.ico"> 
+<link rel="apple-touch-icon" href="http://nec.netease.com/img/touchicon.png"> 
+</head> 
+<body class="p-article"> 
+<div class="g-hd f-usn"> 
+    <div class="g-in"> 
+        <div class="m-head"> 
+            <h1><a href="http://nec.netease.com/">NEC 更好的CSS方案</a></h1> 
+        </div> 
+    </div> 
+</div> 
+<div class="g-nv f-usn"> 
+    <div class="g-in"> 
+        <ul class="m-nav"> 
+            <li class="first"><a href="http://nec.netease.com/">首页</a><i></i></li> 
+            <li class="crt"><a href="http://nec.netease.com/standard">规范</a><i></i></li> 
+            <li><a href="http://nec.netease.com/framework">框架</a><i></i></li> 
+            <li><a href="http://nec.netease.com/library">代码库</a><i></i></li> 
+            <li><a href="http://nec.netease.com/plugin">插件</a><i></i></li> 
+            <li><a href="http://nec.netease.com/case">案例</a><i></i></li> 
+        </ul> 
+    </div> 
+</div> 
+<div class="g-bd2"> 
+    <div class="g-in"> 
+        <div class="g-sd"> 
+             
+            <div id="menu" class="m-menu f-usn"> 
+    <ul class="f-cb"> 
+     
+        <li> 
+            <a href="http://nec.netease.com/standard/css-sort.html">分类方法</a> 
+        </li> 
+        <li> 
+            <a href="http://nec.netease.com/standard/css-name.html">命名规则</a> 
+        </li> 
+        <li> 
+            <a href="http://nec.netease.com/standard/css-format.html">代码格式</a> 
+        </li> 
+        <li> 
+            <a href="http://nec.netease.com/standard/css-optimize.html">优化方案</a> 
+        </li> 
+        <li class="crt"> 
+            <a href="http://nec.netease.com/standard/css-practice.html">最佳实践</a> 
+        </li> 
+        <li> 
+            <a href="http://nec.netease.com/standard/css-error.html">典型错误</a> 
+        </li> 
+     
+     
+     
+     
+     
+     
+                 
+         
+    </ul> 
+</div> 
+        </div> 
+        <div class="g-mn"> 
+            <div class="g-mnc"> 
+                <div class="m-article"> 
+                    <h2 class="u-ttb2">CSS规范 - 最佳实践</h2> 
+                    <div class="u-line"><span class="linea"></span><span class="lineb"></span></div> 
+                    <dl> 
+                        <dt>最佳选择器写法（模块）</dt> 
+                        <dd> 
+<div><div id="highlighter_685066" class="syntaxhighlighter  css"><div class="toolbar"><span><a href="http://nec.netease.com/standard/css-practice.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="css comments">/* 这是某个模块 */</code></div><div class="line number2 index1 alt1"><code class="css plain">.m-nav{}</code><code class="css comments">/* 模块容器 */</code></div><div class="line number3 index2 alt2"><code class="css plain">.m-nav li,.m-nav a{}</code><code class="css comments">/* 先共性&nbsp; 优化组合 */</code></div><div class="line number4 index3 alt1"><code class="css plain">.m-nav li{}</code><code class="css comments">/* 后个性&nbsp; 语义化标签选择器 */</code></div><div class="line number5 index4 alt2"><code class="css plain">.m-nav a{}</code><code class="css comments">/* 后个性中的共性 按结构顺序 */</code></div><div class="line number6 index5 alt1"><code class="css plain">.m-nav a.a1{}</code><code class="css comments">/* 后个性中的个性 */</code></div><div class="line number7 index6 alt2"><code class="css plain">.m-nav a.a2{}</code><code class="css comments">/* 后个性中的个性 */</code></div><div class="line number8 index7 alt1"><code class="css plain">.m-nav .z-crt a{}</code><code class="css comments">/* 交互状态变化 */</code></div><div class="line number9 index8 alt2"><code class="css plain">.m-nav .z-crt a.a1{} </code></div><div class="line number10 index9 alt1"><code class="css plain">.m-nav .z-crt a.a2{} </code></div><div class="line number11 index10 alt2"><code class="css plain">.m-nav .btn{}</code><code class="css comments">/* 典型后代选择器 */</code></div><div class="line number12 index11 alt1"><code class="css plain">.m-nav .btn-1{}</code><code class="css comments">/* 典型后代选择器扩展 */</code></div><div class="line number13 index12 alt2"><code class="css plain">.m-nav .btn-dis{}</code><code class="css comments">/* 典型后代选择器扩展（状态） */</code></div><div class="line number14 index13 alt1"><code class="css plain">.m-nav .btn.z-dis{}</code><code class="css comments">/* 作用同上，请二选一（如果可以不兼容IE6时使用） */</code></div><div class="line number15 index14 alt2"><code class="css plain">.m-nav .m-sch{}</code><code class="css comments">/* 控制内部其他模块位置 */</code></div><div class="line number16 index15 alt1"><code class="css plain">.m-nav .u-sel{}</code><code class="css comments">/* 控制内部其他元件位置 */</code></div><div class="line number17 index16 alt2"><code class="css plain">.m-nav-1{}</code><code class="css comments">/* 模块扩展 */</code></div><div class="line number18 index17 alt1"><code class="css plain">.m-nav-1 li{} </code></div><div class="line number19 index18 alt2"><code class="css plain">.m-nav-dis{}</code><code class="css comments">/* 模块扩展（状态） */</code></div><div class="line number20 index19 alt1"><code class="css plain">.m-nav.z-dis{}</code><code class="css comments">/* 作用同上，请二选一（如果可以不兼容IE6时使用） */</code></div></div></td></tr></tbody></table></div></div> 
+                        </dd> 
+                        <dt>统一语义理解和命名</dt> 
+                        <dd> 
+                            <table> 
+                                <caption>布局（.g-）</caption> 
+                                <thead> 
+                                    <tr><th>语义</th><th>命名</th><th>简写</th></tr> 
+                                </thead> 
+                                <tbody> 
+                                    <tr><td>文档</td><td>doc</td><td>doc</td></tr> 
+                                    <tr><td>头部</td><td>head</td><td>hd</td></tr> 
+                                    <tr><td>主体</td><td>body</td><td>bd</td></tr> 
+                                    <tr><td>尾部</td><td>foot</td><td>ft</td></tr> 
+                                    <tr><td>主栏</td><td>main</td><td>mn</td></tr> 
+                                    <tr><td>主栏子容器</td><td>mainc</td><td>mnc</td></tr> 
+                                    <tr><td>侧栏</td><td>side</td><td>sd</td></tr> 
+                                    <tr><td>侧栏子容器</td><td>sidec</td><td>sdc</td></tr> 
+                                    <tr><td>盒容器</td><td>wrap/box</td><td>wrap/box</td></tr> 
+                                </tbody> 
+                            </table> 
+                            <table> 
+                                <caption>模块（.m-）、元件（.u-）</caption> 
+                                <thead> 
+                                    <tr><th>语义</th><th>命名</th><th>简写</th></tr> 
+                                </thead> 
+                                <tbody> 
+                                    <tr><td>导航</td><td>nav</td><td>nav</td></tr> 
+                                    <tr><td>子导航</td><td>subnav</td><td>snav</td></tr> 
+                                    <tr><td>面包屑</td><td>crumb</td><td>crm</td></tr> 
+                                    <tr><td>菜单</td><td>menu</td><td>menu</td></tr> 
+                                    <tr><td>选项卡</td><td>tab</td><td>tab</td></tr> 
+                                    <tr><td>标题区</td><td>head/title</td><td>hd/tt</td></tr> 
+                                    <tr><td>内容区</td><td>body/content</td><td>bd/ct</td></tr> 
+                                    <tr><td>列表</td><td>list</td><td>lst</td></tr> 
+                                    <tr><td>表格</td><td>table</td><td>tb</td></tr> 
+                                    <tr><td>表单</td><td>form</td><td>fm</td></tr> 
+                                    <tr><td>热点</td><td>hot</td><td>hot</td></tr> 
+                                    <tr><td>排行</td><td>top</td><td>top</td></tr> 
+                                    <tr><td>登录</td><td>login</td><td>log</td></tr> 
+                                    <tr><td>标志</td><td>logo</td><td>logo</td></tr> 
+                                    <tr><td>广告</td><td>advertise</td><td>ad</td></tr> 
+                                    <tr><td>搜索</td><td>search</td><td>sch</td></tr> 
+                                    <tr><td>幻灯</td><td>slide</td><td>sld</td></tr> 
+                                    <tr><td>提示</td><td>tips</td><td>tips</td></tr> 
+                                    <tr><td>帮助</td><td>help</td><td>help</td></tr> 
+                                    <tr><td>新闻</td><td>news</td><td>news</td></tr> 
+                                    <tr><td>下载</td><td>download</td><td>dld</td></tr> 
+                                    <tr><td>注册</td><td>regist</td><td>reg</td></tr> 
+                                    <tr><td>投票</td><td>vote</td><td>vote</td></tr> 
+                                    <tr><td>版权</td><td>copyright</td><td>cprt</td></tr> 
+                                    <tr><td>结果</td><td>result</td><td>rst</td></tr> 
+                                    <tr><td>标题</td><td>title</td><td>tt</td></tr> 
+                                    <tr><td>按钮</td><td>button</td><td>btn</td></tr> 
+                                    <tr><td>输入</td><td>input</td><td>ipt</td></tr> 
+                                </tbody> 
+                            </table> 
+                            <table> 
+                                <caption>功能（.f-）</caption> 
+                                <thead> 
+                                    <tr><th>语义</th><th>命名</th><th>简写</th></tr> 
+                                </thead> 
+                                <tbody> 
+                                    <tr><td>浮动清除</td><td>clearboth</td><td>cb</td></tr> 
+                                    <tr><td>向左浮动</td><td>floatleft</td><td>fl</td></tr> 
+                                    <tr><td>向右浮动</td><td>floatright</td><td>fr</td></tr> 
+                                    <tr><td>内联块级</td><td>inlineblock</td><td>ib</td></tr> 
+                                    <tr><td>文本居中</td><td>textaligncenter</td><td>tac</td></tr> 
+                                    <tr><td>文本居右</td><td>textalignright</td><td>tar</td></tr> 
+                                    <tr><td>文本居左</td><td>textalignleft</td><td>tal</td></tr> 
+                                    <tr><td>垂直居中</td><td>verticalalignmiddle</td><td>vam</td></tr> 
+                                    <tr><td>溢出隐藏</td><td>overflowhidden</td><td>oh</td></tr> 
+                                    <tr><td>完全消失</td><td>displaynone</td><td>dn</td></tr> 
+                                    <tr><td>字体大小</td><td>fontsize</td><td>fs</td></tr> 
+                                    <tr><td>字体粗细</td><td>fontweight</td><td>fw</td></tr> 
+                                </tbody> 
+                            </table> 
+                            <table> 
+                                <caption>皮肤（.s-）</caption> 
+                                <thead> 
+                                    <tr><th>语义</th><th>命名</th><th>简写</th></tr> 
+                                </thead> 
+                                <tbody> 
+                                    <tr><td>字体颜色</td><td>fontcolor</td><td>fc</td></tr> 
+                                    <tr><td>背景</td><td>background</td><td>bg</td></tr> 
+                                    <tr><td>背景颜色</td><td>backgroundcolor</td><td>bgc</td></tr> 
+                                    <tr><td>背景图片</td><td>backgroundimage</td><td>bgi</td></tr> 
+                                    <tr><td>背景定位</td><td>backgroundposition</td><td>bgp</td></tr> 
+                                    <tr><td>边框颜色</td><td>bordercolor</td><td>bdc</td></tr> 
+                                </tbody> 
+                            </table> 
+                            <table> 
+                                <caption>状态（.z-）</caption> 
+                                <thead> 
+                                    <tr><th>语义</th><th>命名</th><th>简写</th></tr> 
+                                </thead> 
+                                <tbody> 
+                                    <tr><td>选中</td><td>selected</td><td>sel</td></tr> 
+                                    <tr><td>当前</td><td>current</td><td>crt</td></tr> 
+                                    <tr><td>显示</td><td>show</td><td>show</td></tr> 
+                                    <tr><td>隐藏</td><td>hide</td><td>hide</td></tr> 
+                                    <tr><td>打开</td><td>open</td><td>open</td></tr> 
+                                    <tr><td>关闭</td><td>close</td><td>close</td></tr> 
+                                    <tr><td>出错</td><td>error</td><td>err</td></tr> 
+                                    <tr><td>不可用</td><td>disabled</td><td>dis</td></tr> 
+                                </tbody> 
+                            </table> 
+                        </dd> 
+                    </dl> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
+ 
+<div class="g-ft"> 
+    <div class="g-in"> 
+        <div class="m-ft"> 
+            <p><a href="http://nec.netease.com/about.html">关于我们</a>|<a href="http://nec.netease.com/license.txt" target="_blank">MIT开源协议</a>|<a href="mailto:nehzwd@163.com?subject=To%20NEC%20Team">意见反馈</a>|<a href="http://hr.163.com/getPositionById.do?rms=1&amp;id=236" target="_blank">加入我们</a>|<a href="http://nej.netease.com/" target="_blank">NEJ:更好的JS解决方案</a></p> 
+            <p>Copyright © 1997-2013 NetEase. All Rights Reserved. </p> 
+        </div> 
+    </div> 
+</div> 
+ 
+ 
+<script type="text/javascript"> 
+(function(d) { 
+    var _pageType = 'article'; 
+    var _title = encodeURIComponent(d.title); 
+    var _url = encodeURIComponent(d.location); 
+    var _temp = d.createDocumentFragment(); 
+    var _share = d.createElement('div'); 
+    _share.innerHTML = '<ul class="f-cb" id="share"><li><a href="'+'http://t.163.com/article/user/checkLogin.do?link='+_url+'&info='+_title+_url+'" target="_blank" title="分享到网易微博" class="s1">网易微博</a></li><li><a href="'+'http://v.t.sina.com.cn/share/share.php?title='+_title+_url+'" target="_blank" title="分享到新浪微博" class="s2">新浪微博</a></li><li><a href="'+'http://v.t.qq.com/share/share.php?title='+_title+'&url='+_url+'" target="_blank" title="分享到腾讯微博" class="s3">腾讯微博</a></li><li><a href="'+'http://widget.renren.com/dialog/share?resourceUrl='+_url+'&title='+_title+'" target="_blank" title="分享到人人网" class="s4">人人网</a></li><li><a href="'+'http://www.douban.com/recommend/?title='+_title+'&url='+_url+'" target="_blank" title="分享到豆瓣" class="s5">豆瓣</a></li></ul>'; 
+    _temp.appendChild(_share); 
+    if(_pageType == 'library'){ 
+        _share.className = "m-share m-share-2 f-usn"; 
+        d.getElementById('bwrapin').appendChild(_temp); 
+    }else if(_pageType == 'animator'){ 
+        _share.className = "m-share m-share-2 m-share-2-1 f-usn"; 
+        d.getElementById('anglobal').appendChild(_temp); 
+        d.getElementById('share').style.display = 'none'; 
+    }else{ 
+    	_share.className = "m-share f-usn"; 
+        d.body.appendChild(_temp); 
+    } 
+})(document); 
+ 
+</script><div class="m-share f-usn"><ul class="f-cb" id="share"><li><a href="http://t.163.com/article/user/checkLogin.do?link=http%3A%2F%2Fnec.netease.com%2Fstandard%2Fcss-practice.html&amp;info=%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%20-%20CSS%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88http%3A%2F%2Fnec.netease.com%2Fstandard%2Fcss-practice.html" target="_blank" title="分享到网易微博" class="s1">网易微博</a></li><li><a href="http://v.t.sina.com.cn/share/share.php?title=%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%20-%20CSS%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88http%3A%2F%2Fnec.netease.com%2Fstandard%2Fcss-practice.html" target="_blank" title="分享到新浪微博" class="s2">新浪微博</a></li><li><a href="http://v.t.qq.com/share/share.php?title=%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%20-%20CSS%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88&amp;url=http%3A%2F%2Fnec.netease.com%2Fstandard%2Fcss-practice.html" target="_blank" title="分享到腾讯微博" class="s3">腾讯微博</a></li><li><a href="http://widget.renren.com/dialog/share?resourceUrl=http%3A%2F%2Fnec.netease.com%2Fstandard%2Fcss-practice.html&amp;title=%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%20-%20CSS%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" target="_blank" title="分享到人人网" class="s4">人人网</a></li><li><a href="http://www.douban.com/recommend/?title=%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%20-%20CSS%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88&amp;url=http%3A%2F%2Fnec.netease.com%2Fstandard%2Fcss-practice.html" target="_blank" title="分享到豆瓣" class="s5">豆瓣</a></li></ul></div> 
+ 
+ 
+<script type="text/javascript"> 
+(function() { 
+    var _start = 134; 
+    var _menu = document.getElementById('menu'); 
+    var _classDefault = "m-menu f-usn "; 
+    var _classAdd = "m-menu-fixed"; 
+    window.onscroll = function(){ 
+        if(!_menu) return; 
+        var _scrollTop = document.body.scrollTop + document.documentElement.scrollTop; 
+        if(_scrollTop >= _start && _menu.className.indexOf(_classAdd)==-1){ 
+            _menu.className = _classDefault + _classAdd; 
+        }else if(_scrollTop < _start && _menu.className.indexOf(_classAdd)!=-1){ 
+            _menu.className = _classDefault; 
+        } 
+    } 
+})(); 
+</script> 
+ 
+<script type="text/javascript"> 
+(function() { 
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); 
+    var _oScript = document.createElement("script"); 
+    _oScript.type = "text/javascript"; 
+    _oScript.src = _bdhmProtocol + 'hm.baidu.com/h.js?b674c1af47b842e5c20286c4c189366f'; 
+    document.body.appendChild(_oScript); 
+})(); 
+</script><script type="text/javascript" src="./最佳实践 - CSS规范 - 规范 - NEC _ 更好的CSS样式解决方案_files/h.js"></script> 
+<script src="./最佳实践 - CSS规范 - 规范 - NEC _ 更好的CSS样式解决方案_files/core.js" type="text/javascript"></script><script src="./最佳实践 - CSS规范 - 规范 - NEC _ 更好的CSS样式解决方案_files/pp_standard_css_practice.js" type="text/javascript"></script>
+ 
+ 
+</body></html>

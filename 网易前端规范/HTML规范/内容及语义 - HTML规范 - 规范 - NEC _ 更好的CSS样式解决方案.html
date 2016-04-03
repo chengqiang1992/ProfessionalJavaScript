@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://nec.netease.com/standard/html-content.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+ 
+ 
+<title>内容及语义 - HTML规范 - 规范 - NEC : 更好的CSS样式解决方案</title> 
+<meta name="keywords" content="CSS方案,CSS规范,CSS框架,CSS代码库,CSS插件,网页制作,前端页面开发,解决方案"> 
+<meta name="description" content="NEC包括了规范、框架、代码库、插件等内容，致力于为前端开发人员提供高效率高质量的前端页面开发解决方案，提高多人协作效率，也为非专业人员提供快速制作网页的解决方案。"> 
+<meta name="viewport" content="width=device-width"> 
+<link href="./内容及语义 - HTML规范 - 规范 - NEC _ 更好的CSS样式解决方案_files/core.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="http://nec.netease.com/img/favicon.ico"> 
+<link rel="apple-touch-icon" href="http://nec.netease.com/img/touchicon.png"> 
+</head> 
+<body class="p-article"> 
+<div class="g-hd f-usn"> 
+    <div class="g-in"> 
+        <div class="m-head"> 
+            <h1><a href="http://nec.netease.com/">NEC 更好的CSS方案</a></h1> 
+        </div> 
+    </div> 
+</div> 
+<div class="g-nv f-usn"> 
+    <div class="g-in"> 
+        <ul class="m-nav"> 
+            <li class="first"><a href="http://nec.netease.com/">首页</a><i></i></li> 
+            <li class="crt"><a href="http://nec.netease.com/standard">规范</a><i></i></li> 
+            <li><a href="http://nec.netease.com/framework">框架</a><i></i></li> 
+            <li><a href="http://nec.netease.com/library">代码库</a><i></i></li> 
+            <li><a href="http://nec.netease.com/plugin">插件</a><i></i></li> 
+            <li><a href="http://nec.netease.com/case">案例</a><i></i></li> 
+        </ul> 
+    </div> 
+</div> 
+<div class="g-bd2"> 
+    <div class="g-in"> 
+        <div class="g-sd"> 
+             
+            <div id="menu" class="m-menu f-usn"> 
+    <ul class="f-cb"> 
+     
+     
+        <li> 
+            <a href="http://nec.netease.com/standard/html-structure.html">整体结构</a> 
+        </li> 
+        <li> 
+            <a href="http://nec.netease.com/standard/html-format.html">代码格式</a> 
+        </li> 
+        <li class="crt"> 
+            <a href="http://nec.netease.com/standard/html-content.html">内容语义</a> 
+        </li> 
+        <li> 
+            <a href="http://nec.netease.com/standard/html-email.html">邮件内容</a> 
+        </li> 
+     
+     
+     
+     
+     
+                 
+         
+    </ul> 
+</div> 
+        </div> 
+        <div class="g-mn"> 
+            <div class="g-mnc"> 
+                <div class="m-article"> 
+                    <h2 class="u-ttb2">HTML规范 - 内容语义</h2> 
+                    <div class="u-line"><span class="linea"></span><span class="lineb"></span></div> 
+                    <dl> 
+                        <dt>内容类型决定使用的语义标签</dt> 
+                        <dd> 
+                            <p>在网页中某种类型的内容必定需要某种特定的HTML标签来承载，也就是我们常常提到的根据你的内容语义化HTML结构。</p> 
+                        </dd> 
+                        <dt>加强“资源型”内容的可访问性和可用性</dt> 
+                        <dd> 
+                            <p>在资源型的内容上加入描述文案，比如给img添加alt属性，在audio内加入文案和链接等等。</p> 
+                        </dd> 
+                        <dt>加强“不可见”内容的可访问性</dt> 
+                        <dd> 
+                            <p>背景图上的文字应该同时写在html中，并使用css使其不可见，有利于搜索引擎抓取你的内容，也可以在css失效的情况下看到内容。</p> 
+                        </dd> 
+                        <dt>适当使用实体</dt> 
+                        <dd> 
+                            <p>以实体代替与HTML语法相同的字符，避免浏览解析错误。</p> 
+                            <table> 
+                                <caption>常用HTML字符实体（建议使用实体）：</caption> 
+                                <thead> 
+                                    <tr><th>字符</th><th>名称</th><th>实体名</th><th>实体数</th></tr> 
+                                </thead> 
+                                <tbody> 
+                                    <tr><td>"</td><td>双引号</td><td>&amp;quot;</td><td>&amp;#34;</td></tr> 
+                                    <tr><td>&amp;</td><td>&amp;符</td><td>&amp;amp;</td><td>&amp;#38;</td></tr> 
+                                    <tr><td>&lt;</td><td>左尖括号（小于号）</td><td>&amp;lt;</td><td>&amp;#60;</td></tr> 
+                                    <tr><td>&gt;</td><td>右尖括号（大于号）</td><td>&amp;gt;</td><td>&amp;#62;</td></tr> 
+                                    <tr><td>&nbsp;</td><td>空格</td><td>&amp;nbsp;</td><td>&amp;#160;</td></tr> 
+                                    <tr><td>　</td><td>中文全角空格</td><td>&nbsp;</td><td>&amp;#12288;</td></tr> 
+                                </tbody> 
+                            </table> 
+                            <table> 
+                                <caption>常用特殊字符实体（不建议使用实体）：</caption> 
+                                <thead> 
+                                    <tr><th>字符</th><th>名称</th><th>实体名</th><th>实体数</th></tr> 
+                                </thead> 
+                                <tbody> 
+                                    <tr><td>¥</td><td>元</td><td>&amp;yen;</td><td>&amp;#165;</td></tr> 
+                                    <tr><td>¦</td><td>断竖线</td><td>&amp;brvbar;</td><td>&amp;#166;</td></tr> 
+                                    <tr><td>©</td><td>版权</td><td>&amp;copy;</td><td>&amp;#169;</td></tr> 
+                                    <tr><td>®</td><td>注册商标R</td><td>&amp;reg;</td><td>&amp;#174;</td></tr> 
+                                    <tr><td>™</td><td>商标TM</td><td>&amp;trade;</td><td>&amp;#8482;</td></tr> 
+                                    <tr><td>·</td><td>间隔符</td><td>&amp;middot;</td><td>&amp;#183;</td></tr> 
+                                    <tr><td>«</td><td>左双尖括号</td><td>&amp;laquo;</td><td>&amp;#171;</td></tr> 
+                                    <tr><td>»</td><td>右双尖括号</td><td>&amp;raquo;</td><td>&amp;#187;</td></tr> 
+                                    <tr><td>°</td><td>度</td><td>&amp;deg;</td><td>&amp;#176;</td></tr> 
+                                    <tr><td>×</td><td>乘</td><td>&amp;times;</td><td>&amp;#215;</td></tr> 
+                                    <tr><td>÷</td><td>除</td><td>&amp;divide;</td><td>&amp;#247;</td></tr> 
+                                    <tr><td>‰</td><td>千分比</td><td>&amp;permil;</td><td>&amp;#8240;</td></tr> 
+                                </tbody> 
+                            </table> 
+                        </dd> 
+                    </dl> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
+ 
+<div class="g-ft"> 
+    <div class="g-in"> 
+        <div class="m-ft"> 
+            <p><a href="http://nec.netease.com/about.html">关于我们</a>|<a href="http://nec.netease.com/license.txt" target="_blank">MIT开源协议</a>|<a href="mailto:nehzwd@163.com?subject=To%20NEC%20Team">意见反馈</a>|<a href="http://hr.163.com/getPositionById.do?rms=1&amp;id=236" target="_blank">加入我们</a>|<a href="http://nej.netease.com/" target="_blank">NEJ:更好的JS解决方案</a></p> 
+            <p>Copyright © 1997-2013 NetEase. All Rights Reserved. </p> 
+        </div> 
+    </div> 
+</div> 
+ 
+ 
+<script type="text/javascript"> 
+(function(d) { 
+    var _pageType = 'article'; 
+    var _title = encodeURIComponent(d.title); 
+    var _url = encodeURIComponent(d.location); 
+    var _temp = d.createDocumentFragment(); 
+    var _share = d.createElement('div'); 
+    _share.innerHTML = '<ul class="f-cb" id="share"><li><a href="'+'http://t.163.com/article/user/checkLogin.do?link='+_url+'&info='+_title+_url+'" target="_blank" title="分享到网易微博" class="s1">网易微博</a></li><li><a href="'+'http://v.t.sina.com.cn/share/share.php?title='+_title+_url+'" target="_blank" title="分享到新浪微博" class="s2">新浪微博</a></li><li><a href="'+'http://v.t.qq.com/share/share.php?title='+_title+'&url='+_url+'" target="_blank" title="分享到腾讯微博" class="s3">腾讯微博</a></li><li><a href="'+'http://widget.renren.com/dialog/share?resourceUrl='+_url+'&title='+_title+'" target="_blank" title="分享到人人网" class="s4">人人网</a></li><li><a href="'+'http://www.douban.com/recommend/?title='+_title+'&url='+_url+'" target="_blank" title="分享到豆瓣" class="s5">豆瓣</a></li></ul>'; 
+    _temp.appendChild(_share); 
+    if(_pageType == 'library'){ 
+        _share.className = "m-share m-share-2 f-usn"; 
+        d.getElementById('bwrapin').appendChild(_temp); 
+    }else if(_pageType == 'animator'){ 
+        _share.className = "m-share m-share-2 m-share-2-1 f-usn"; 
+        d.getElementById('anglobal').appendChild(_temp); 
+        d.getElementById('share').style.display = 'none'; 
+    }else{ 
+    	_share.className = "m-share f-usn"; 
+        d.body.appendChild(_temp); 
+    } 
+})(document); 
+ 
+</script><div class="m-share f-usn"><ul class="f-cb" id="share"><li><a href="http://t.163.com/article/user/checkLogin.do?link=http%3A%2F%2Fnec.netease.com%2Fstandard%2Fhtml-content.html&amp;info=%E5%86%85%E5%AE%B9%E5%8F%8A%E8%AF%AD%E4%B9%89%20-%20HTML%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88http%3A%2F%2Fnec.netease.com%2Fstandard%2Fhtml-content.html" target="_blank" title="分享到网易微博" class="s1">网易微博</a></li><li><a href="http://v.t.sina.com.cn/share/share.php?title=%E5%86%85%E5%AE%B9%E5%8F%8A%E8%AF%AD%E4%B9%89%20-%20HTML%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88http%3A%2F%2Fnec.netease.com%2Fstandard%2Fhtml-content.html" target="_blank" title="分享到新浪微博" class="s2">新浪微博</a></li><li><a href="http://v.t.qq.com/share/share.php?title=%E5%86%85%E5%AE%B9%E5%8F%8A%E8%AF%AD%E4%B9%89%20-%20HTML%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88&amp;url=http%3A%2F%2Fnec.netease.com%2Fstandard%2Fhtml-content.html" target="_blank" title="分享到腾讯微博" class="s3">腾讯微博</a></li><li><a href="http://widget.renren.com/dialog/share?resourceUrl=http%3A%2F%2Fnec.netease.com%2Fstandard%2Fhtml-content.html&amp;title=%E5%86%85%E5%AE%B9%E5%8F%8A%E8%AF%AD%E4%B9%89%20-%20HTML%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" target="_blank" title="分享到人人网" class="s4">人人网</a></li><li><a href="http://www.douban.com/recommend/?title=%E5%86%85%E5%AE%B9%E5%8F%8A%E8%AF%AD%E4%B9%89%20-%20HTML%E8%A7%84%E8%8C%83%20-%20%E8%A7%84%E8%8C%83%20-%20NEC%20%3A%20%E6%9B%B4%E5%A5%BD%E7%9A%84CSS%E6%A0%B7%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88&amp;url=http%3A%2F%2Fnec.netease.com%2Fstandard%2Fhtml-content.html" target="_blank" title="分享到豆瓣" class="s5">豆瓣</a></li></ul></div> 
+ 
+ 
+<script type="text/javascript"> 
+(function() { 
+    var _start = 134; 
+    var _menu = document.getElementById('menu'); 
+    var _classDefault = "m-menu f-usn "; 
+    var _classAdd = "m-menu-fixed"; 
+    window.onscroll = function(){ 
+        if(!_menu) return; 
+        var _scrollTop = document.body.scrollTop + document.documentElement.scrollTop; 
+        if(_scrollTop >= _start && _menu.className.indexOf(_classAdd)==-1){ 
+            _menu.className = _classDefault + _classAdd; 
+        }else if(_scrollTop < _start && _menu.className.indexOf(_classAdd)!=-1){ 
+            _menu.className = _classDefault; 
+        } 
+    } 
+})(); 
+</script> 
+ 
+<script type="text/javascript"> 
+(function() { 
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); 
+    var _oScript = document.createElement("script"); 
+    _oScript.type = "text/javascript"; 
+    _oScript.src = _bdhmProtocol + 'hm.baidu.com/h.js?b674c1af47b842e5c20286c4c189366f'; 
+    document.body.appendChild(_oScript); 
+})(); 
+</script><script type="text/javascript" src="./内容及语义 - HTML规范 - 规范 - NEC _ 更好的CSS样式解决方案_files/h.js"></script> 
+ 
+ 
+</body></html>
