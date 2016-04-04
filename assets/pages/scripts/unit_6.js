@@ -1,3 +1,13 @@
+// 第六章  面向对象的程序设计
+// 面向对象(Object-Oriented,oo)的语言有一个标志，那就是他们都有类的概念，而通过类可以
+// 创建任意多个具有相同属性和方法的对象。前面提到过的，ECMAScript中没有类的概念，因此
+// 它的对象也与基于类的语言中的对象有所不同。
+
+// ECMA-262把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或函数。”严格来讲
+// 这就相当于说对象是一组没有特定顺序的值。对象的每个属性或方法都有一个名字，而每个名字
+// 都映射到一个值。正因为这样（以及其他将要讨论的原因）。我们可以把ECMAScript的对象想象
+// 成散列表：无非就是一组名值对，其中值可以使数据或函数。
+
 // 6.1  理解对象
 
 // 上一章讲过，创建自定义对象的最简单方式就是创建一个Object的实例，然后再为他添加属性和方法。
@@ -9,6 +19,7 @@
 // person.sayName = function(){
 // 	alert(this.name);
 // };
+// person.sayName();
 
 // 字面量创建方式
 // var person = {
@@ -17,7 +28,7 @@
 // 	job:"Software Engineer",
 
 // 	sayName:function(){
-// 		return 'name:'+this.name+'<br>age:'+this.age+this.job;
+// 		return 'name:'+this.name+'	'+'age:'+this.age+this.job;
 // 	}
 // };
 
@@ -33,12 +44,13 @@
 // 1.数据属性
 // 	数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。
 
-// 	[[Configurable]]：表示能否通过delete删除属性从而重新定义属性
-// 	[[Enumerable]]：表示能否通过for-in循环返回属性
-// 	[[Writable]]：能否修改属性的值
+// 	[[Configurable]]：表示能否通过delete删除属性从而重新定义属性,能否修改属性的特性，或者能否把属性修改为访问器属性。
+//						像前面的例子，他们的默认属性值就是为true。
+// 	[[Enumerable]]：表示能否通过for-in循环返回属性。像前面例子中那样直接在对象上定义的属性，他们的这个特性默认值为true。
+// 	[[Writable]]：能否修改属性的值。像前面的例子这个特性默认，它们这个默认特性值为true。
 // 	[[Value]]：包含这个属性的数据值
 
-// 对于前面李子中那样直接在对象上定义的属性，他们的[[Configurable]]，[[Enumerable]]，[[Writable]]，[[Value]]
+// 对于前面例子中那样直接在对象上定义的属性，他们的[[Configurable]]，[[Enumerable]]，[[Writable]]，[[Value]]
 // 的特性都被设置为true。
 
 // 要修改属性默认的特性，必须使用ECMAScript 5中的Object.defineProperty(Object, prop, descriptor)方法。
@@ -54,16 +66,83 @@
 // person.name = "juju";
 // alert(person.name);
 
+// var person = {};
+// Object.defineProperty(person, "name", {
+// 	configurable:false,
+// 	value:"chengqiang"
+// });
+
+// 抛出错误
+// Object.defineProperty(person, "name", {
+// 	configurable:true,
+// 	value:"chengqiang"
+// });
+// alert(person.name);
+// delete person.name;
+// alert(person.name);
+
 // 在调用 Object.defineProperty(Object, prop, descriptor)方法时，如果不指定，Configurable、Enumerable、Writable特性默认值都是false。多数情况下，没有必要
 // 利用 Object.defineProperty(Object, prop, descriptor)方法提供的这些高级功能。不过，理解这些概念对理解Javascript对象却非常有用。
 
 // 2.访问属性
 // 	访问器属性不包含数据值；他们包含一对儿getter和setter函数。在读取访问其属性是，会调用getter函数，这个函数会负责返回有效的值
 
-// 	[[Configurable]]：表示能否通过delete删除属性从而重新定义属性
-// 	[[Enumerable]]：表示能否通过for-in循环返回属性
-// 	[[Writable]]：能否修改属性的值
-// 	[[Value]]：包含这个属性的数据值
+// 	[[Configurable]]：表示能否通过delete删除属性从而重新定义属性,能否修改属性的特性，或者能否把属性修改为访问器属性。
+//						像前面的例子，他们的默认属性值就是为true。
+// 	[[Enumerable]]：表示能否通过for-in循环返回属性。默认为true。
+// 	[[Get]]：在读取属性时调用的函数，默认值为undefinded。
+// 	[[Set]]：在写入属性时调用的函数。默认值为undefinded。
+// var book = {
+// 	_year:2004,
+// 	edition:1,
+// };
+
+// Object.defineProperty(book,"year",{
+// 	get:function(){
+// 		return this._year;
+// 	},
+// 	set:function(newValue){
+// 		if (newValue > 2004) {
+// 			this._year = newValue;
+// 			this.edition += newValue -2004;
+// 		}
+// 	}
+// });
+
+// book.year = 2005;
+// alert(book.edition);
+
+// 以上代码创建了一个book对象，并给它定义了两个默认的属性：_year和edition。_year前面的下划线是一种常用的记号，用于表示只能通过对象方法访问的属性。
+// 而访问器属性year则包含一个getter函数和一个setter函数。getter函数返回_year的值，setter函数通过计算来确定正确的版本。因此，把year函数修改为2005
+// 会导致_year变成2005，而edition变为2。这是使用访问器属性的常见方式，即设置一个属性的值会导致其他属性的变化。
+
+// 6.1.2  定义多个属性
+var book = {};
+
+Object.defineProperties(book, (
+	_year: {
+		value:2004
+	},
+	edition: {
+		value:1
+	},
+	year: {
+		get: function(){
+			return this._year;
+		},
+		set: function(){
+			if(newValue > 2004){
+				this._year = newValue;
+				this._year += newValue -2004;
+			}
+		}
+	}
+	));
+book.year = 2005;
+alert(book._year);
+alert(book.year);
+alert(book.year);
+
 
 // 6.2  创建对象
 
