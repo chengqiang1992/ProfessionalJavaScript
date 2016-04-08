@@ -81,7 +81,8 @@
 // delete person.name;
 // alert(person.name);
 
-// 在调用 Object.defineProperty(Object, prop, descriptor)方法时，如果不指定，Configurable、Enumerable、Writable特性默认值都是false。多数情况下，没有必要
+// 在调用 Object.defineProperty(Object, prop, descriptor)方法时，如果不指定，Configurable、Enumerable、Writable特性默认值都是false。
+//多数情况下，没有必要
 // 利用 Object.defineProperty(Object, prop, descriptor)方法提供的这些高级功能。不过，理解这些概念对理解Javascript对象却非常有用。
 
 // 2.访问属性
@@ -117,31 +118,64 @@
 // 会导致_year变成2005，而edition变为2。这是使用访问器属性的常见方式，即设置一个属性的值会导致其他属性的变化。
 
 // 6.1.2  定义多个属性
-var book = {};
+// var book = {};
 
-Object.defineProperties(book, (
-	_year: {
-		value:2004
-	},
-	edition: {
-		value:1
-	},
-	year: {
-		get: function(){
-			return this._year;
-		},
-		set: function(){
-			if(newValue > 2004){
-				this._year = newValue;
-				this._year += newValue -2004;
-			}
-		}
-	}
-	));
-book.year = 2005;
-alert(book._year);
-alert(book.year);
-alert(book.year);
+// Object.defineProperties(book,{
+// 	_year: {
+// 		value:2004
+// 	},
+// 	edition: {
+// 		value:1
+// 	},
+// 	year: {
+// 		get: function(){
+// 			return this._year;
+// 		},
+// 		set: function(newValue){
+// 			if(newValue > 2004){
+// 				this._year = newValue;
+// 				this._year += newValue -2004;
+// 			}
+// 		}
+// 	}
+// 	});
+// book.year = 2005;
+// alert(book._year);
+// alert(book.year);
+// alert(book.year);
+
+
+// 6.1.2  读取属性的特性
+// 使用ECMAScript 5的Object.getOwnPropertyDescriptor(Object, prop)方法，可以取得给定属性的描述符。
+// 这个方法接受两个参数：属性所在的对象和要读取其描述符的属性名称。
+// 返回值是一个对象，如果是访问器属性，这个对象的属性有configurable、enumerable、get、set；
+// 如果是数据属性，这个对象的属性有configurable、enumerable、writable、value；例如：
+
+
+// var book = {};
+
+// Object.defineProperties(book,{
+// 	_year: {
+// 		value:2004
+// 	},
+// 	edition: {
+// 		value:1
+// 	},
+// 	year: {
+// 		get: function(){
+// 			return this._year;
+// 		},
+// 		set: function(newValue){
+// 			if(newValue > 2004){
+// 				this._year = newValue;
+// 				this._year += newValue -2004;
+// 			}
+// 		}
+// 	}
+// 	});
+// var descriptor = Object.getOwnPropertyDescriptor(book,"_year");
+// alert(descriptor.value);			//2004
+// alert(descriptor.configurable);		//false
 
 
 // 6.2  创建对象
@@ -150,7 +184,7 @@ alert(book.year);
 
 // 	6.2.1  工厂模式
 
-	// function createPerson(name,age,job){
+	// function createPerson(name,age,job){    
 	// 	var o = new Object();
 	// 	o.name = name;
 	// 	o.age = age;
@@ -270,7 +304,14 @@ alert(book.year);
 	// 	就拿前面的例子来说。 Person.prototype.constructor指向 Person。而通过这个构造函数，我们还可以继续为原型对象
 	// 	添加其他属性和方法。
 
-	// 	创建了自定义的构造函数之后，其原型对象默认只会取得 constructor属性；至于其他方法，则都是从 Object继承而来的。
+	// 	创建了自定义的构造函数之后，其原型对象默认只会取得 constructor属性；至于其他方法，则都是从 Object继承而来的。当调用构造函数创建一个新实例
+	// 后，该实例的内部将包含一个指针（内部属性），指向构造函数的原型对象。ECMA-262第五版中管这个指针叫做[[Prototype]]。虽然脚本中没有标准的方式访问
+	// [[Prototype]]，但是在Firefox、Safari和Chrome在每个对象上都支持一个属性_proto_；存在其他实现中，这个属性对脚本是完全不可见的。
+	// 图6-1展示了Person构造函数、Person的原型属性以及Person现有的两个实例之间的关系。在此，Person.prototype指向了原型对象，而 Person.prototype.constructor
+	// 又指回了Person。原型对象中除了 constructor属性之外、还包括后来添加的其他属性。 Person的每个实例都包含一个内部属性，该属性仅仅指向了 Person.prototype。
+	// 换句话说，他们与构造函数中之间并无直接关系。此外要格外注意的是，虽然这两个实例都不包含属性和方法，但我们可以调用 person1.sayName()。这是通过查找对象
+	// 属性的过程来实现的。
+	
 	// 	当调用了构造函数创建了一个新示例，该实例的内部将包含一个指针(内部属性)，指向构造函数的
 	// 	原型对象。ECMA-262第五版中管这个指针叫做[[Prototype]]。
 	// 	虽然在所有实例中都无法访问到[[Prototype]],但是可以通过 isPrototypeOf(Object)方法来确定对象之间是否存在这种关系。
@@ -476,9 +517,15 @@ alert(book.year);
 		// friend.sayName();
 		// 6.2.6  寄生构造函数
 		// 6.2.7  稳妥构造函数
+
 	// 6.3  继承
+			// ECMAScript只支持实现继承。
 
 	// 	6.3.1  原型链
+				// ECMAScript中描述了原型链的概念，并将原型链作为实现继承的主要方法。其基本思想是利用原型让一个类型继承另一个类型的属性和方法。简单回顾一下
+				// 构造函数、原型和实例的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。
+				// 那么，加入我们让原型对象等于另一个类型的实例，结果会怎么样呢？显然，此时的原型对象都将包含一个指向另一个原型的指针，相应地，另一个原型中
+				// 包含着一个指向另一个构造函数的指针。假如另一个原型又是另一个类型的实例，那么上述关系依然成立。
 
 			// function SuperType(){
 			// 	this.prototype = true;
@@ -499,9 +546,79 @@ alert(book.year);
 
 			// var instance = new SubType();
 			// alert(instance.getSuperVaule());
+			// 以上定义了两个类型：SuperType和SubType。每个类型都分别有一个属性和一个方法。他们的主要区别是SubType继承了SuperType,
+			// 而继承是通过创建SuperType的实例，并将该实例赋给SubType.prototype实现的。实现的本质是重写原型对象，代之以一个新类型的实例。
+			// 换句话说，原来存在于。
+
+			// 1.别忘记默认的原型。
+			// 2.确认原型和实例的关系。
+			// 3.谨慎地定义方法。
 
 			// 原型链的问题：
 			// 	首先，引用类型也被继承
 			// 	其次，无法向父类传递参数
 
+
 			// 6.3.2  借用构造函数
+			// function SuperType(){
+			// 	this.colors = ["red","blue","green"];
+			// }
+			// function SubType(){
+			// 	//继承了SuperType
+			// 	SuperType.call(this);
+			// }
+
+			// var instance1 = new SubType();
+			// instance1.colors.push("black");
+			// alert(instance1.colors);
+
+			// var instance2 = new SubType();
+			// alert(instance2.colors);
+			// 1.传递参数
+			// function SuperType(name){
+			// 	this.name = name;
+			// }
+			// function SubType(){
+			// 	//继承了SuperType,同时还传递了参数
+			// 	SuperType.call(this,"Nicholas");
+			// 	//实例属性
+			// 	this.age = 29;
+			// }
+
+			// var instance = new SubType();
+			// alert(instance.name);		//Nicholas
+			// alert(instance.age);		//29
+
+			// 6.3.3  组合继承
+			// function SuperType(name){
+			// 	this.name = name;
+			// 	this.colors = ["red","blue","green"];
+			// }
+
+			// SuperType.prototype.sayName = function(){
+			// 	alert(this.name);
+			// };
+
+			// function SubType(name,age){
+			// 	//继承属性
+			// 	SuperType.call(this,name);
+
+			// 	this.age = age;
+			// }
+
+			// //继承方法
+			// SubType.prototype = new SuperType();
+			// SubType.prototype.sayAge = function(){
+			// 	alert(this.age);
+			// };
+
+			// var instance = new SubType("Nicholas",29);
+			// instance.colors.push("black");
+			// alert(instance.colors);
+			// instance.sayName();
+			// instance.sayAge();
+
+
+
+
+
