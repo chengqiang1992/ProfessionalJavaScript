@@ -2,8 +2,23 @@
 JavaScript高级程序设计第三版笔记及源码
 
 ### 第一章：JavaScript简介
-    1.1  JavaScript简史  诞生于1995年，目的是将应该由服务器端的验证移到客户端验证。
+          诞生于1995年，目的是将应该由服务器端的验证移到客户端验证。
+    1.1  JavaScript简史
+          > * 1995年2月，Netscape Navigator 2 开发一种名为 LiveScript 的脚本语言——该语言将同时在浏览器中和服务端使用。由 布兰登 艾奇开发（Brendan Eich）
+          > * 1997年， JavaScript 1.1 为蓝本交给欧洲计算机制造商协会（ECAM, European Computer Manufactures Association），该协会制定39号技术委员会（TC 39，Technical Committee #39）负责“标准化一种通用、跨平台、供应商中立的脚本语言的语意和语法”
+          > * 1998年，ISO/IEC(International Organization for Standardization and International Electrotechnical Commission, 国际标准化组合和国际电工委员会)也采用ECAMScript作为标准（ISO/IEC-16262）
     1.2  JavaScript实现  完整JavaScript应由核心ECMAScript，浏览器对象模型BOM，文档对象模型DOM构成。ECMAScript提供语言核心功能，BOM提供与浏览器交互的方法和接口，DOM提供访问和操作网页的方法和接口。
+    1.2.1 ECMAScript
+          1. ECMAScript的版本
+              第一版：ECMA-262的第一版本质上与NetScape的JavaScript 1.1相同——只不过删除了所有针对浏览器的代码并做了一些较小的改动
+              第二版：主要是编辑加工的结果
+              第三版：是对该标准第一次真正的修改。修改内容包括字符串处理、错误定义和数值输出。这一版还包括对正则表达式、控制语句、try-catch 异常处理的支持，并围绕标准的国际化做出了一些微小的改动
+              第四版：针对这门语言进行了一次全面的检核修订。由于JavaScript在web上日益流行，开发人员纷纷建议修订ECMAScript，以使其能够满足不断增长的 Web 开发需求。第四版不仅包含了强类型变量、新语句和新数据结构、真正的类和经典继承，还定义了与数据交互的新的方式
+              第五版：TC 39下属的一个小组也提出一个名为ECMAScript3.1的替代性建议，该建议只对这门语言进行了较少的改进。这个小组认为第四版对这门语言的跨越太大。因此成为第五版
+          2. 文档对象模型（DOM）
+              1. 为什么要使用DOM
+              2. DOM级别
+          3. 浏览器对象模型（BOM）
     1.3  JavaScript版本
     1.4  小结
 
@@ -13,11 +28,15 @@ JavaScript高级程序设计第三版笔记及源码
         使用<script> 直接在页面中嵌入JavaScript，只需<script type="text/javascript"><script>
                      外部包含JavaScript，必须加src属性。<script type="#" src="#"><script>
         注意：1. 现代web一般将全部JavaScript引用放在<body>元素中页面内容的后面；
-              2. defer 延迟脚本，async 异步脚本
+              2. defer 延迟脚本，async 异步脚本（立即下载但是延迟执行、立即下载异步执行）
     2.2 嵌入脚本与外部脚本
         最好使用外部脚本：优点 可维护性，可缓存，适应未来。
     2.3 文档模式对JavaScript的影响
-    2.4 考虑禁用JavaScript
+    2.4 <noscript> 元素
+        <noscript>
+            本页面需要浏览器支持（启用）JavaScript
+        </noscript>
+        
 
 ### 第三章：基本概念
     ECMA-262第三版中定义的ECMAScript是各浏览器实现最多的一个版本，ECMA-262第五版是浏览器接下来要实现的版本。我们主要讲第三版，并就第五版的变化做出说明。
