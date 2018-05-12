@@ -1,5 +1,5 @@
 # ProfessionalJavaScript
-JAvaScript高级程序设计第三版笔记及源码
+JavaScript高级程序设计第三版笔记及源码
 
 ### 第一章：JavaScript简介
     1.1  JavaScript简史  诞生于1995年，目的是将应该由服务器端的验证移到客户端验证。
