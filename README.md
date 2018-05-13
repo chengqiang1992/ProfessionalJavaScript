@@ -58,15 +58,35 @@ JavaScript高级程序设计第三版笔记及源码
                  2. "boolean"——如果这个值是布尔值
                  3. "string"——如果这个值是字符串
                  4. "number"——如果这个值是数值
-                 5. "object"——如果这个值是对象
+                 5. "object"——如果这个值是对象或null
                  6. "function"——如果这个值是函数
                     注意：特殊值被认为是一个空对象的引用。
+                    注意：Safari 5及之前的版本、Chrome 7及之前版本在对正则表达式调用typeof操作符时会返回"function"，而其他浏览器会返回"object"。
           3.4.2 Undefind类型
                 - Undefind类型只有一个值，即特殊的undefine。
                 - 使用var申明变量但未初始化，这个变量的值就是undefined；
                 - 直接alert未申明的值会产生错误，但是typedof 未声明的值也为undefined。
+
+                包含 undefined 值的变量与尚未定义的变量还是不一样。看看下面例子
+                var message;    // 这个变量声明之后默认取得了 undefined 的值
+                // var age;     // 这个变量没有声明
+                alert(message); // undefined
+                alert(age);     // Uncaught ReferenceError: age is not defined
+
+                然后，令人困惑的是：对未初始化的变量执行 typeof 操作会返回 undefined 值，而对未声明的变量执行
+                typeof 操作符同样也会返回undefined值。来看下面的例子。
+                var message;    // 这个变量声明之后默认取得了 undefined 的值
+                // var age;     // 这个变量没有声明
+                alert(typeof message); // "undefined"
+                alert(typeof age);     // "undefined"
+
+
           3.4.3 Null类型
                 Null类型只有一个值的数据类型，这个数据类型是null。从逻辑上看，null表示空对象指针，而这也正是使用typedof操作符检测null值时会返回"object"的原因。如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为null。
+
+                console.log(null == undefined) // true
+
+
                 尽管null 和undefined有这样的关系，但它们的用途完全不同。如前所述，无论在什么情况下都没有必要把一个变量的值显式地设置为undefined，可是同样的规则对null 却不适用。换句话说，只要意在保存对象的变量还没有真正保存对象，就应该明确地让该变量保存null 值。这样做不仅可以体现null 作为空对象指针的惯例，而且也有助于进一步区分null 和undefined。
           3.4.4 Boolean类型
                 Boolean对象只有两个字面值：true和false，true不一定等于1，false也不一定等于0。
@@ -82,6 +102,45 @@ JavaScript高级程序设计第三版笔记及源码
                 ---
                  
           3.4.5 Number类型
+
+                最基本的数值字面亮格式是十进制整数，十进制整数可以想下面这样直接在代码中输入：
+                    var item = 55;          // 整数
+                除十进制表示外，整数还可以通过八进制（以8为基数）或十六进制（以16为基数）的字面量来表示
+                    var octalNum1 = 070;    // 八进制的56
+                    var octalNum2 = 079;    // 无效的八进制数值-解析为79
+                    var octalNum3 = 08;     // 无效的八进制数值-解析为8
+
+                    var hexNum1 = 0xA;      // 十六进制的10
+                    var hexNum2 = 0x1f;     // 十六进制的31
+                
+                1. 浮点数值
+                    所谓浮点数值，就是该数值中必须包含一个小数点，并且小数点后面必须至少有一位数字。
+
+                    由于保存浮点数值需要的内存空间是保存整数值的两倍，因此ECMAScript会不失时机地将浮点数值转换为整数值。
+
+                    对于那些极大值或者极小的数值，可以用e表示法（即科学计数法）来表示的浮点数值表示。
+
+                2. 数值范围
+                    由于内存的限制，ECMAScript并不能存储世界上所有的数值。ECMAScript能够表示的最小数值保存在 Number.MIN_VALUE (5e-324)；能够表示的最大值保存在 Number.MAX_VALUE (1.7976931348623157e+308)
+                    Number.MIN_SAFE_INTEGER: -9007199254740991     Number.MAX_SAFE_INTEGER: 9007199254740991
+                    超过JavaScript数值范围的值自动转化成特殊的 Infinity; Number.MAX_VALUE + Number.MAX_VALUE == Infinity    Number.MAX_SAFE_INTEGER + Number.MAX_SAFE_INTEGER == 18014398509481982
+
+                3. NaN
+                    NaN, 即非数值（Not a Number）是一个特殊的数值。这个数值用于表示一个本来要返回数值的操作数未返回数值的情况（这样就不会抛出错误了）。例如，在其他编程语言中，任何数值除以0都会导致错误，从而停止代码执行。
+                    但在ECMAScript中，任何数值除以0都会返回NaN，因此不会影响其他代码的执行。
+
+                    NaN本身有两个非同寻常的特点：
+                    > * 任何涉及NaN的操作（例如NaN/10）都会返回NaN
+                    > * 其次NaN与任何值都不想等，包括本身
+
+                    针对NaN的这个特点，ECMAScript 定义了 isNaN()函数。这个函数接受一个参数，该参数可以是任何类型，而函数会帮我们确定这个值是否“不是数值”。
+
+                    console.log(isNaN(NaN))     true
+                    console.log(isNaN(10))      false  （10是一个数值）
+                    console.log(isNaN("10"))    false   （可以被转换成数值）
+                    console.log(isNaN("blue"))  true    （不能转换成数值）
+                    console.log(isNaN(true))    false   （可以被转换成数值1）
+
                 Number()、parseInt()和parseFloat()。第一个函数，即转型函数Number()可以用于任何数据类型，而另两个函数则专门用于把字符串转换成数值。
                 var num1 = parseInt("1234blue"); // 1234
                 var num2 = parseInt(""); // NaN
