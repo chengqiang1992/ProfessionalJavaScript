@@ -1,50 +1,142 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8"/>
-	<title>unit_6</title>
+    <meta charset="utf-8" />
+    <title>unit_6</title>
 
-	<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-	<meta content="width=device-width,initial-scale" name="vieport"/>
-	<meta content="" name="description"/>
-	<meta content="" name="author"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width,initial-scale" name="vieport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
 
-	<link rel="stylesheet" type="text/css" href="../assets/pages/css/unit_5.css">
+    <link rel="stylesheet" type="text/css" href="../assets/pages/css/unit_5.css">
 </head>
+
 <body>
 
-<header>
-	<h2>第六章  面向对象的程序设计</h2>
-</header>
+    <header>
+        <h2>第六章 面向对象的程序设计</h2>
+        <p>ECMA-262 把对象定义为：<span style="color: red">“无序属性的集合，其属性可以包含基本值、对象或者函数。”</span>严格来讲，这就相当于说对象是一组没有特定顺序的值。</p>
+    </header>
 
-<section>
-	<h3>6.1  理解对象</h3>
-		<h4>6.1.1  属性类型</h4>
-		<h4>6.1.2  定义多个属性</h4>
-		<h4>6.1.3  读取属性的特性</h4>
-	<h3>6.2  创建对象</h3>
-		<h4>6.2.1  工厂模式</h4>
-		<h4>6.2.2  构造函数模式</h4>
-		<h4>6.2.3  原型模式</h4>
-		<h4>6.2.4  组合使用构造函数模式和原型模式</h4>
-		<h4>6.2.5  动态原型模式</h4>
-		<h4>6.2.6  寄生构造函数模式</h4>
-		<h4>6.2.7  稳妥构造函数模式</h4>
-	<h3>6.3  继承</h3>
-		<h4>6.3.1  原型链</h4>
-		<h4>6.3.2  借用构造函数</h4>
-		<h4>6.3.3  组合继承</h4>
-		<h4>6.3.4  原型式继承</h4>
-		<h4>6.3.5  寄生式继承</h4>
-		<h4>6.3.6  寄生组合式继承</h4>
-</section>
+    <section>
+        <h3>6.1 理解对象</h3>
+        <h4>6.1.1 属性类型</h4>
+        <p>ECMAScript 中有两种属性：数据属性和访问器属性</p>
+        <ul>
+            <li>
+                <p style="color: red; font-weight: 600">1. 数据属性</p>
+                <p>
+                    <ul>
+                        <li>[[Configurable]]: 表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。</li>
+                        <li>[[Enumberable]]: 表示能否通过for-in 循环返回属性。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为 true。</li>
+                        <li>[[Writable]]: 表示能否修改属性的值。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为 true。</li>
+                        <li>[[Value]]: 包含这个属性的数据值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。这个特性的值默认为 undefined。</li>
+                    </ul>
+                </p>
+                <p style="color: red; font-weight: bold">要修改属性默认的特性，必须使用ECMAScript 的 Object.defineProperty() 方法。这个方法接受三个参数：属性所在对象，属性的名字和一个描述符对象。其中描述符对象必须是：Configurable、Enumberable、Writable、Value</p>
+                <pre>
+									<code>
+										var person = {};
+										Object.defineProperty(person, "name", {
+											writable: false,
+											value: "Nicholas"
+										});
+										alert(person.name);			// "Nicholas"
+										person.name = "Greg";
+										alert(person.name);			// "Nicholas"
+									</code>
+								</pre>
+            </li>
+            <li>
+                <p style="color: red; font-weight: 600">2. 访问器属性</p>
+                <p>
+                    <ul>
+                        <li>[[Configurable]]: 表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。对于直接定义在对象上的属性，这个特性的默认值为 true。</li>
+                        <li>[[Enumberable]]: 表示能否通过for-in 循环返回属性。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为 true。</li>
+                        <li>[[Get]]: 在读取属性时调用的函数。默认值为 undefined。</li>
+                        <li>[[Set]]: 在写入属性时调用的函数。默认值为 undefined。</li>
+                    </ul>
+                </p>
+                <p style="color: red; font-weight: bold">要修改属性默认的特性，必须使用ECMAScript 的 Object.defineProperty() 方法。这个方法接受三个参数：属性所在对象，属性的名字和一个描述符对象。其中描述符对象必须是：Configurable、Enumberable、Writable、Value</p>
+                <pre>
+								<code>
+										var book = {
+											_year: 2004,
+											edition: 1
+										};
+										Object.defineProperty(book, "year", {
+											get: function() {
+												return this._year;
+											},
+											set: function(newValue) {
+												if (newValue > 2004) {
+													this._year = newValue;
+													this.edition += newValue - 2004;
+												}
+											}
+										});
+										book.year = 2005;
+										alert(book.edition);		// 2
+								</code>
+							</pre>
+            </li>
+        </ul>
+        <h4>6.1.2 定义多个属性</h4>
+        <p>由于为对象定义多个属性的可能性很大，ECMAScript 5又定义了一个 Object.definePropertise()方法。</p>
+        <pre><code>
+						var book = {};
+						Object.defineProperties(book, {
+							_year: {
+								value: 2004
+							},
+							edition: {
+								value: 1
+							},
+							year: {
+								get: function() {
+									return this._year;
+								},
+								set: function(newValue) {
+									if (newValue > 2004) {
+										this._year = newValue;
+										this.edition += newValue - 2004;
+									}
+								}
+							}
+						})
+				</code></pre>
+        <h4>6.1.3 读取属性的特性</h4>
+        <pre style="color: red">
+					<code>
+							var descriptor = Object.getOwnPropertyDescriptor(book, "_year")
+					</code>
+				</pre>
+        <h3>6.2 创建对象</h3>
+        <h4>6.2.1 工厂模式</h4>
+        <h4>6.2.2 构造函数模式</h4>
+        <h4>6.2.3 原型模式</h4>
+        <h4>6.2.4 组合使用构造函数模式和原型模式</h4>
+        <h4>6.2.5 动态原型模式</h4>
+        <h4>6.2.6 寄生构造函数模式</h4>
+        <h4>6.2.7 稳妥构造函数模式</h4>
+        <h3>6.3 继承</h3>
+        <h4>6.3.1 原型链</h4>
+        <h4>6.3.2 借用构造函数</h4>
+        <h4>6.3.3 组合继承</h4>
+        <h4>6.3.4 原型式继承</h4>
+        <h4>6.3.5 寄生式继承</h4>
+        <h4>6.3.6 寄生组合式继承</h4>
+    </section>
 
-<footer>
-	<div class="page-footer-inner">
-		 2016 &copy; 610工作室. <a href="http://www.choudiaosi.com" target="_blank">610工作室!</a>
-	</div>
-</footer>
-	
-	<script type="text/javascript" src="../assets/pages/scripts/unit_6.js"></script>
+    <footer>
+        <div class="page-footer-inner">
+            2016 &copy; 610工作室. <a href="http://www.choudiaosi.com" target="_blank">610工作室!</a>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../assets/pages/scripts/unit_6.js"></script>
 </body>
+
 </html>
