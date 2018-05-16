@@ -114,9 +114,123 @@
 					</code>
 				</pre>
         <h3>6.2 创建对象</h3>
+        
         <h4>6.2.1 工厂模式</h4>
+        <pre>
+            <code>
+                function createPerson(name,age,job){    
+                    var o = new Object();
+                    o.name = name;
+                    o.age = age;
+                    o.job = job;
+                    o.sayName = function(){
+                        alert(this.name);
+                    }
+                    return o;
+                }
+
+                var person1 = createPerson('chengqiang',22,'software engineer');
+                var person2 = createPerson('pluto',22,'Front end');
+
+                person1.sayName();
+                person2.sayName();
+            </code>
+        </pre>
+        <p style="color: red; font-weight: bold">
+            缺点：没有解决对象识别问题。
+        </p>
+        <p style="color: red; font-weight: bold">
+            alert(person1 instanceof createPerson);     //false
+        </p>
+        <p style="color: red; font-weight: bold">
+            alert(person1 instanceof Object);           //true
+        </p>
+    
         <h4>6.2.2 构造函数模式</h4>
+        <pre>
+            <code>
+                function Person(name,age,job){
+                    this.name = name;
+                    this.age = age;
+                    this.job = job;
+                    this.sayName = function(){
+                        alert(this.name);
+                    };
+                }
+
+                var person1 = new Person('chengqiang',22,'Software Engineer');
+                var person2 = new Person('pluto',22,'Front');
+
+                person1.sayName();
+                person2.sayName();
+            </code>
+        </pre>
+        <p>alert(person1.constructor == Person);   //true</p>
+        <p>alert(person2.constructor == Person);   //true</p>
+        <p style="color: red; font-weight: bold"> 对象的 constructor属性最初是用来表示对象类型的。</p>
+        <p style="color: red; font-weight: bold">但是提到检测对象类型，还是 instanceof 
+    // 操作符更可靠一些。我们在这个例子中创建的所有对象既是 Object 的实例，同时也是 要创建Person的新实例</p>
+        <ul>
+            <li>// alert(person1 instanceof Object);        //true</li>
+            <li>// alert(person1 instanceof Person);        //true</li>
+            <li>// alert(person2 instanceof Object);        //true</li>
+            <li>// alert(person2 instanceof Person);        //true</li>
+        </ul>
+
         <h4>6.2.3 原型模式</h4>
+        <pre>
+            <code>
+                function Person(){
+                }
+
+                Person.prototype.name = 'chengqiang';
+                Person.prototype.age = 22;
+                Person.prototype.job = 'Software Engineer';
+                Person.prototype.sayName = function(){
+                    alert(this.name);
+                }
+
+                var person1 = new Person();
+                var person2 = new Person();
+
+                console.log(person1.hasOwnProperty("name"));        // false
+                console.log("name" in person1);                     // true
+
+                person1.name = "Greg";
+                console.log(person1.name);                          // Greg
+                console.log(person1.hasOwnProperty("name"));        // true
+                console.log("name" in person1);                     // true
+
+                console.log(person2.name);                          // chengqiang
+                console.log(person2.hasOwnProperty("name"));        // false
+                console.log("name" in person2);                     // true
+            </code>
+        </pre>
+        <pre style="color: red; font-weight: bold;">
+            <code>
+                function hasPrototypeProperty(object, name) {
+                    return !object.hasOwnProperty(name) && (name in object)
+                }
+            </code>
+        </pre>
+
+        <pre><code>
+            function Person(){
+            }
+
+            Person.prototype.name = 'chengqiang';
+            Person.prototype.age = 22;
+            Person.prototype.job = 'Software Engineer';
+            Person.prototype.sayName = function(){
+                alert(this.name);
+            }
+
+            var person = new Person();
+            <span style="color: red; font-weight: bold;">console.log(hasPrototypeProperty(person, 'name'));     // true</span>
+            person.name = "Greg"
+            <span style="color: red; font-weight: bold;">console.log(hasPrototypeProperty(person, 'name'));     // false</span>
+        </code></pre>
+        <p style="color: red; font-weight: bold">在这里，name属性显示存在于原型中，因此 hasPrototypeProperty() 返回true。在当实例中重写name属性以后，改属性就存在于实例中了。因此false</p>
         <h4>6.2.4 组合使用构造函数模式和原型模式</h4>
         <h4>6.2.5 动态原型模式</h4>
         <h4>6.2.6 寄生构造函数模式</h4>
